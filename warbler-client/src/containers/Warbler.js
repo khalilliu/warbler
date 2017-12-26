@@ -3,6 +3,7 @@ import {applyMiddleware, createStore} from 'redux';
 import {Provider} from 'react-redux';
 import thunk from 'redux-thunk';
 import {createLogger} from 'redux-logger';
+import {BrowserRouter as Router} from 'react-router-dom';
 
 import {authenticateUser} from '../actions/index';
 import rootReducers, {getCurrentUser} from '../reducers/index';
@@ -22,10 +23,13 @@ if(user){
 }
 
 const Warbler = ()=>{
-    <Provider store={store}>
-        <App />
-    </Provider>
-}
+    return (
+        <Provider store={store}>
+            <Router>
+                <App />
+            </Router>
+        </Provider>
+    )}
 
 
 export default Warbler;

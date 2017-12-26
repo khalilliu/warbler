@@ -8,7 +8,7 @@ export const authenticateUser = (currentUser) => ({
     currentUser
 })
 
-export const authRequest = (authInfo, url) => {
+const authRequest = (authInfo, url) => {
     return fetch(url,{
         method:"post",
         headers: new Headers({
@@ -33,15 +33,16 @@ export const authRequest = (authInfo, url) => {
 }
 
 export const signUp = (authInfo) => {
-    (dispatch, getState) => {
+    (dispatch, getState) => {return(
         authRequest(authInfo,'/api/auth/signup')
         .then(currentUser => dispatch(authenticateUser(currentUser)))
-    }
+    )}
 }
 
 export const signIn = (authInfo) => {
     (dispatch, getState) => {
+    return (
         authRequest(authInfo, '/api/auth/signin')
         .then(currentUser => dispatch(authenticateUser(currentUser)))
-    }
+    )}
 }

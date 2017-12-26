@@ -1,6 +1,6 @@
 import React,{Component} from 'react';
 import Logo from '../images/warbler-logo.png';
-
+import {Link} from 'react-router-dom';
 import './Navbar.css';
 
 class Navbar extends Component{
@@ -8,6 +8,7 @@ class Navbar extends Component{
         super(props);
     }
     render(){
+        const {currentUser, profileImageUrl}=this.props;
         return(
             <nav className="navbar navbar-default">
               <div className="container-fluid">
@@ -25,13 +26,17 @@ class Navbar extends Component{
                 </div>
             
                 <div className="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-
+                {!currentUser ?
                   <ul className="nav navbar-nav navbar-right">
-                    <li className='active'><a href="#">Sign up</a></li>
-                    <li><a href="#" >Sign in</a></li>
+                    <li><Link to="/signup">Sign up</Link></li>
+                    <li><Link to="/signin">Log in</Link></li>
+                  </ul> :
+                  <ul className="nav navbar-nav navbar-right">
+                    <li><a><img src={profileImageUrl} alt='user'/></a></li>
                     <li><a href="#">New message</a></li>
                     <li><a href="#">Log out</a></li>
                   </ul>
+                }
                 </div>
               </div>
             </nav>
