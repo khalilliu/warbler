@@ -2,6 +2,7 @@ import React from 'react';
 import {Link} from 'react-router-dom';
 import Moment from 'react-moment';
 import './MessageItem.css'
+
 const MessageItem = (props) => {
 	const {profileImageUrl, username, date, text} = props;
 	return(
