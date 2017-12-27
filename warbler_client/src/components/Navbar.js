@@ -33,7 +33,7 @@ class Navbar extends Component{
                   </ul> :
                   <ul className="nav navbar-nav navbar-right">
                     <li><a><img src={profileImageUrl} alt='user'/></a></li>
-                    <li><a href="#">New message</a></li>
+                    <li><Link to={`/users/${currentUser.userId}/messages/new`}>New message</Link></li>
                     <li><Link to='/signin' onClick={onLogout}>Log out</Link></li>
                   </ul>
                 }

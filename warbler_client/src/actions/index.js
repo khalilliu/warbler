@@ -45,3 +45,16 @@ export const signIn = (authInfo) => {
         .then(currentUser => dispatch(authenticateUser(currentUser)))
     )
 }
+
+export const addMessage = message => {
+    return ({
+        type: "ADD_MESSAGE",
+        message
+    })
+}
+
+export const postNewMessage = (text) => {
+    return (dispatch) => {
+        return dispatch(addMessage(text))
+    }
+}
