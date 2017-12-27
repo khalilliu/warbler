@@ -10,8 +10,9 @@ const setCurrentUser = (currentUser) => {
 
 //get current user from localStorage
 export const getCurrentUser = () => {
-    Promise.resolve(JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY)))
-    .then((result)=>{return result}).catch((e)=>{return undefined})
+    try{
+        return JSON.parse(localStorage.getItem(LOCAL_STORAGE_USER_KEY));
+    }catch(e){return undefined}
 }
 
 const currentUser = (state=null, action) => {

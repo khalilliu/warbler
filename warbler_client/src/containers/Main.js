@@ -43,7 +43,7 @@ class Main extends Component {
                     signIn={false}
                     heading={'Join Warbler today.'}
                     buttonText={"Sign me up!"}
-                    onAuth={(authInfo)=>{handleSignUp(authInfo).then(()=>history.push('/'))}}
+                    onAuth={(authInfo)=>{console.log(handleSignUp);handleSignUp(authInfo).then(()=>history.push('/'))}}
                     errorMessage={authErrorMessage}
                     {...props}
                 

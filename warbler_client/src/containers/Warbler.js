@@ -16,9 +16,9 @@ if(process.env.NODE_ENV !== 'production'){
 
 const store = createStore(rootReducers, applyMiddleware(...middleware));
 
-//check if user is login
+//get user from localStorage while component mounted
 let user = getCurrentUser();
-if(user){
+if(!!user && JSON.stringify(user) !== "{}"){
     store.dispatch(authenticateUser(user));
 }
 
