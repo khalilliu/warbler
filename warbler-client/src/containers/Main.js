@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import {connect} from 'react-redux';
+import {bindActionCreators} from 'redux';
 import {Switch, Route, withRouter  } from 'react-router-dom';
 import * as actions from '../actions/index';
 import AuthForm from '../components/AuthForm';
@@ -59,9 +60,10 @@ const mapStateToProps = state => ({
     errorMessage: state.errorMessage
 })
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-    handleSignIn(authData){return dispatch(actions.signIn(authData))},
-    handleSignUp(authData){return dispatch(actions.signUp(authData))}
-})
+const mapDispatchToProps = (dispatch, ownProps) => {
+    return bindActionCreators(
+        {handleSignIn:actions.signIn,handleSignUp:actions.signUp}
+        ,dispatch)
+}
 
 export default withRouter(connect(mapStateToProps,mapDispatchToProps)(Main));

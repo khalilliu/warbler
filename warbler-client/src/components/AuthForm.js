@@ -2,7 +2,7 @@ import React, {Component} from 'react';
 
 class AuthForm extends Component{
     static defaultProps = {
-      onAuth(){},
+      onAuth(){ },
       heading:"Welcome back.",
       buttonText:"Log in",
       signIn:true,
