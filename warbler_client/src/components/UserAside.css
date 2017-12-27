@@ -1,0 +1,11 @@
+#profile-image,
+#profile-avatar{
+	border-radius: 5px;
+	display: block;
+	margin-left: -5px;
+}
+
+#profile-image{
+	width: 100%;
+	margin: 0 auto 5px;
+}

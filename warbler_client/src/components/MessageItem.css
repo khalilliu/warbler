@@ -1,0 +1,27 @@
+.timeline-image{
+	border-radius: 10px;
+	height: 40px;
+	width: 40px;
+	margin-top: 2px;
+	flex: 1;
+}
+
+.message-area,
+.timeline-image{
+	display: inline-block;
+}
+
+.message-area{
+	margin-left: 5px;
+	flex: 1;
+}
+
+.message-area a{
+	margin-right: 3px;
+}
+
+.message-container{
+	display: flex;
+	flex-direction: row;
+	text-align: left;
+}

@@ -6,6 +6,7 @@ import * as actions from '../actions/index';
 import AuthForm from '../components/AuthForm';
 import PrivateRoute from '../components/PrivateRoute';
 import MessageForm from '../components/MessageForm';
+import Homepage from '../components/Homepage';
 
 //import PrivateRoute from '../components/PrivateRoute';
 
@@ -16,6 +17,10 @@ class Main extends Component {
       super(props);
       this.handleNewMessage = this.handleNewMessage.bind(this);
     }
+
+  componentDidMount(){
+    this.props.loadMessages();
+  }
   
   handleNewMessage(text){
     const {newMessage, history} = this.props;
@@ -30,10 +35,11 @@ class Main extends Component {
           authErrorMessage,
           handleSignIn,
           handleSignUp,
-          history
+          history,
+          messages
       } = this.props;
     return (
-      <div className='container'>
+      <div className='container mt-80'>
         <Switch>
             <Route exac path='/signin' render={(props)=>{
             return(
@@ -65,6 +71,16 @@ class Main extends Component {
               component={MessageForm} 
               componentProps={{onSubmit:this.handleNewMessage}}
             />
+            <Route exac path='/' render={(props)=>{
+              return(
+                <Homepage 
+                {...props} 
+                currentUser={currentUser}
+                messages={messages}
+              />
+              )
+              }} 
+            />
         </Switch>
       </div>
     );
@@ -80,6 +96,7 @@ const mapStateToProps = state => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
     handleSignIn(authData) { return dispatch(actions.signIn(authData)); },
     handleSignUp(authData) { return dispatch(actions.signUp(authData)); },
+    loadMessages(){return dispatch(actions.fetchMessages())},
     newMessage(text){return dispatch(actions.postNewMessage(text))}
 })
 

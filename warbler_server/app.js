@@ -21,7 +21,7 @@ app.use('/api/users/:id/messages',
         messagesRoutes);
 app.use('/api/auth', authRoutes);
 app.get('/api/messages', function(req, res, next) {
-  db.Message.find().sort({createAt: 'desc'})
+  db.Message.find().sort({createdAt: 'desc'})
     .populate("userId", {username: true, profileImageUrl: true})
     .then(function(messages) {
       res.json(messages);

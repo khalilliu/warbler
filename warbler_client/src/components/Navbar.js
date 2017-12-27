@@ -10,7 +10,7 @@ class Navbar extends Component{
     render(){
         const {currentUser,onLogout, profileImageUrl}=this.props;
         return(
-            <nav className="navbar navbar-default">
+            <nav className="navbar navbar-default navbar-fixed-top ">
               <div className="container-fluid">
                 <div className="navbar-header">
                   <button type="button" className="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">

@@ -1,13 +1,13 @@
 import {combineReducers} from 'redux';
 import currentUser, {getCurrentUser} from './currentUser';
-//import messages from './messages';
+import messages from './messages';
 
 export {getCurrentUser};
 
 
 const rootReducers = combineReducers({
-    currentUser
-    
+    currentUser,
+    messages
 })
 
 export default rootReducers;
