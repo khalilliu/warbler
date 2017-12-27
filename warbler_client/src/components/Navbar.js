@@ -8,7 +8,7 @@ class Navbar extends Component{
         super(props);
     }
     render(){
-        const {currentUser, profileImageUrl}=this.props;
+        const {currentUser,onLogout, profileImageUrl}=this.props;
         return(
             <nav className="navbar navbar-default">
               <div className="container-fluid">
@@ -34,7 +34,7 @@ class Navbar extends Component{
                   <ul className="nav navbar-nav navbar-right">
                     <li><a><img src={profileImageUrl} alt='user'/></a></li>
                     <li><a href="#">New message</a></li>
-                    <li><a href="#">Log out</a></li>
+                    <li><Link to='/signin' onClick={onLogout}>Log out</Link></li>
                   </ul>
                 }
                 </div>

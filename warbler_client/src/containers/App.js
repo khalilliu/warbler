@@ -4,7 +4,7 @@ import {withRouter} from 'react-router-dom';
 import Navbar from '../components/Navbar';
 import Main from './Main';
 import * as actions from '../actions/index';
-
+import {bindActionCreators} from 'redux';
 
 
 class App extends Component {
@@ -12,7 +12,7 @@ class App extends Component {
     super(props)
   }
   render() {  
-    const {currentUser} = this.props;
+    const {currentUser, onLogout} = this.props;
     return (
       <div>
         <Navbar 
@@ -22,6 +22,7 @@ class App extends Component {
             ? currentUser.profileImageUrl
             : null
           }
+          onLogout={onLogout}
         />
         <Main />
       </div>
@@ -34,7 +35,11 @@ const mapStateToProps=(state) => ({
 })
 
 // const mapDispatchToProps= (dispatch) => ({
-  
+//   onLogout(){ dispatch(actions.userLogout() ) }
 // })
 
-export default withRouter(connect(mapStateToProps)(App));
+const mapDispatchToProps = (dispatch) => {
+  return bindActionCreators({onLogout: actions.userLogout},dispatch)
+}
+
+export default withRouter(connect(mapStateToProps,mapDispatchToProps)(App));
